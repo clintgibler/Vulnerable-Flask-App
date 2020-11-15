@@ -193,6 +193,22 @@ def login():
     except:
         return jsonify({'Error': 'Unable to recognize Input'}),404
 
+@app.route('/auth', methods = ['POST'])
+def fetch_customer():
+    token = request.headers.get('Authorization')
+    if not token:
+        return jsonify({'Error': 'Not Authenticated!'}),403
+
+@app.route('/unauth', methods = ['GET', 'POST'])
+def unauth():
+    print("asdflkjasdlfkj")
+    return jsonify({'ok': 'blurb!'}),204
+
+@app.route('/unauth2', methods = ['GET'])
+def unauth():
+    return jsonify({'ok': 'blurb!'}),200
+  
+    
 @app.route('/fetch/customer', methods = ['POST'])
 def fetch_customer():
     token = request.headers.get('Authorization')
